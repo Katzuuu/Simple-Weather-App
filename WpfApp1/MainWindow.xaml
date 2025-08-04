@@ -16,7 +16,12 @@
         />
         
         <Grid VerticalAlignment="Top">
-            <StackPanel 
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            
+            <StackPanel Grid.Row="0" 
                 Orientation="Horizontal" 
                 HorizontalAlignment="Center" 
                 Height="50"
@@ -30,13 +35,16 @@
                 >
                     <TextBox 
                         Name="LocationInput"
+                        GotFocus="LocationInput_OnGotFocus"
+                        LostFocus="LocationInput_OnGotFocus"
+                        KeyDown="LocationInput_OnKeyDown"
                         Width="200" Height="30" 
                         BorderThickness="0"
                         Text="Type your location" 
                         Background="Transparent"
                         VerticalContentAlignment="Center"
                         HorizontalAlignment="Right"
-                        Foreground="BlanchedAlmond"
+                        Foreground="#1A1A40"
                     />
                 </Border>
                 <Border
@@ -50,11 +58,30 @@
                         Content="Search" 
                         Background="Transparent"
                         Height="30"
+                        Foreground="#1A1A40"
                         Padding="12 0"
                         BorderThickness="0"
                         Click="SearchBtn_OnClick"
                         Cursor="Hand"
                     />
+                </Border>
+            </StackPanel>
+            <Border Name="AlertBorder" Grid.Row="1" Background="#AAFFFFFF" Height="50" CornerRadius="10" VerticalAlignment="Center" Width="300" Margin=" 0 100 0 0">
+                <TextBlock Text="No Location searched yet" Foreground="#1A1A40" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center" />
+            </Border>
+            <StackPanel Name="InfoPanel" Grid.Row="1" Margin="0 20 0 0" Orientation="Vertical" Visibility="Collapsed" >
+                <Border Background="#AAFFFFFF" CornerRadius="10" Width="220">
+                    <Grid>
+                        <Image Name="ConditionImg" Width="80" Height="80" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin=" 0 0 20 20" Source="https://cdn.weatherapi.com/weather/64x64/day/122.png" />
+                        <StackPanel>
+                            <TextBlock Name="LocationText" Text="London" HorizontalAlignment="Center" Foreground="#1A1A40" Margin="10 10 10 0" FontSize="22" />
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Name="TemperatureText" Text="22" Foreground="#1A1A40" Margin="0 10 0 0" FontSize="90" FontStyle="Italic" />
+                                <TextBlock Text="°C" Foreground="#1A1A40" Margin="0 10 0 0" FontSize="30" Padding="12 0 0  0" />
+                            </StackPanel>
+                            <TextBlock Name="ConditionText" Text="Sunny" HorizontalAlignment="Center" Foreground="#4B3F39" Margin="10 0 10 10" />
+                        </StackPanel>
+                    </Grid>
                 </Border>
             </StackPanel>
         </Grid>

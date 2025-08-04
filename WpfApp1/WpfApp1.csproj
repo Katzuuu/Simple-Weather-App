@@ -9,11 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Resource Include="Images\**\*" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Fonts\**\*" />
+    <Resource Include="Assets\**\*" />
   </ItemGroup>
 
 </Project>
